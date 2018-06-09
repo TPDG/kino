@@ -8,7 +8,8 @@ public class Cinema {
 
     public Cinema(){}
 
-    public Cinema(String name, String street, String city) {
+    public Cinema(int cin_id, String name, String street, String city) {
+        this.cin_id = cin_id;
         this.name = name;
         this.street = street;
         this.city = city;

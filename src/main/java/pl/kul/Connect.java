@@ -10,7 +10,7 @@ public class Connect implements ConnectRepo {
 
     private static final String INSERT_RESERVATION_QUERY = "INSERT INTO reservation " +
             "(first_name, last_name, phone_number, idMovie, idCinema) " +
-            "VALUES (?, ?, ?, ?, ?, ?)";
+            "VALUES (?, ?, ?, ?, ?)";
 
     private final Connection connection;
 
@@ -19,13 +19,13 @@ public class Connect implements ConnectRepo {
 
         try (Statement statement = connection.createStatement()) {
             statement.execute("CREATE TABLE IF NOT EXISTS reservation (" +
-                    "id int NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+                    "res_id int NOT NULL AUTO_INCREMENT PRIMARY KEY," +
                     "first_name varchar NOT NULL," +
                     "last_name varchar NOT NULL," +
-                    "phone_number varchar NOT NULL" +
-                    "idMovie number NOT NULL" +
+                    "phone_number varchar NOT NULL," +
+                    "idMovie number NOT NULL," +
                     "idCinema number NOT NULL" +
-                    "CREATE TABLE IF NOT EXISTS movie (" +
+                    /*"CREATE TABLE IF NOT EXISTS movie (" +
                     "id int NOT NULL AUTO_INCREMENT PRIMARY KEY," +
                     "title varchar NOT NULL," +
                     "director varchar NOT NULL," +
@@ -35,7 +35,7 @@ public class Connect implements ConnectRepo {
                     "runtime number NOT NULL" +
                     "inCinema date NOT NULL" +
                     "outCinema date NOT NULL" +
-                    "idCinema number NOT NULL" +
+                    "idCinema number NOT NULL" +*/
                     ")");
         } catch (SQLException ex) {
             throw new IllegalStateException(ex);
@@ -48,8 +48,8 @@ public class Connect implements ConnectRepo {
             preparedStatement.setString(1, reservation.getFirstName());
             preparedStatement.setString(2, reservation.getLastName());
             preparedStatement.setString(3, reservation.getPhoneNumber());
-            preparedStatement.setInt(4, reservation.getMovie().getMov_id());
-            preparedStatement.setInt(5, reservation.getCinema().getCin_id());
+            preparedStatement.setInt(4, reservation.getMovieId());
+            preparedStatement.setInt(5, reservation.getCinemaId());
 
             int inserted = preparedStatement.executeUpdate();
 

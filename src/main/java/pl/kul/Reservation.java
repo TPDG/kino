@@ -7,6 +7,8 @@ public class Reservation {
     private String phoneNumber;
     private Movie movie;
     private Cinema cinema;
+    private int movieId;
+    private int cinemaId;
 
     public Reservation(String firstName, String lastName, String phoneNumber, Movie movie, Cinema cinema) {
         this.firstName = firstName;
@@ -14,6 +16,15 @@ public class Reservation {
         this.phoneNumber = phoneNumber;
         this.movie = movie;
         this.cinema = cinema;
+    }
+
+    public Reservation(int res_id, String firstName, String lastName, String phoneNumber, int movieId, int cinemaId) {
+        this.res_id = res_id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.movieId = movieId;
+        this.cinemaId = cinemaId;
     }
 
     public int getRes_id() {
@@ -64,14 +75,30 @@ public class Reservation {
         this.cinema = cinema;
     }
 
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
+
+    public int getCinemaId() {
+        return cinemaId;
+    }
+
+    public void setCinemaId(int cinemaId) {
+        this.cinemaId = cinemaId;
+    }
+
     @Override
     public String toString() {
         return "Rezerwacja - " +
                 "Imię: " + firstName + ", " +
                 "Nazwisko: " + lastName + ", " +
                 "Numer telefonu: " + phoneNumber + ", " +
-                "[ Film: " + movie.getTitle() + ", " +
-                cinema + "]"
+                "[ Id filmu: " + movieId + ", " +
+                "Id kina: " + cinemaId + "]"
                 ;
     }
 }
