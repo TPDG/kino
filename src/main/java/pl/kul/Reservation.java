@@ -1,12 +1,14 @@
+package pl.kul;
+
 public class Reservation {
     private int res_id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String movie;
+    private Movie movie;
     private Cinema cinema;
 
-    public Reservation(String firstName, String lastName, String phoneNumber, String movie, Cinema cinema) {
+    public Reservation(String firstName, String lastName, String phoneNumber, Movie movie, Cinema cinema) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -46,11 +48,11 @@ public class Reservation {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getMovie() {
+    public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(String movie) {
+    public void setMovie(Movie movie) {
         this.movie = movie;
     }
 
@@ -68,7 +70,7 @@ public class Reservation {
                 "Imię: " + firstName + ", " +
                 "Nazwisko: " + lastName + ", " +
                 "Numer telefonu: " + phoneNumber + ", " +
-                "[ Film: " + movie + ", " +
+                "[ Film: " + movie.getTitle() + ", " +
                 cinema + "]"
                 ;
     }

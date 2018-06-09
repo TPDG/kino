@@ -1,28 +1,29 @@
-import java.util.ArrayList;
-import java.util.Date;
+package pl.kul;
 
+import java.util.Date;
 
 public class Movie {
     private int mov_id;
-    private Cinema cinema;
-    private Date inCinema;
-    private Date outCinema;
-    private ArrayList playTime;
     private String title;
     private String director;
     private int date;
     private String studio;
     private String genere;
     private int runtime;
+    private Date inCinema;
+    private Date outCinema;
+    private Cinema cinema;
 
-    public Movie( Cinema cinema, String title, String director, int date, String studio, String genere, int runtime) {
-        this.cinema = cinema;
+    public Movie(){}
+
+    public Movie(String title, String director, int date, String studio, String genere, int runtime, Cinema cinema) {
         this.title = title;
         this.director = director;
         this.date = date;
         this.studio = studio;
         this.genere = genere;
         this.runtime = runtime;
+        this.cinema = cinema;
     }
 
     public int getMov_id() {
@@ -31,14 +32,6 @@ public class Movie {
 
     public void setMov_id(int mov_id) {
         this.mov_id = mov_id;
-    }
-
-    public Cinema getCinema() {
-        return cinema;
-    }
-
-    public void setCinema(Cinema cinema) {
-        this.cinema = cinema;
     }
 
     public Date getInCinema() {
@@ -55,14 +48,6 @@ public class Movie {
 
     public void setOutCinema(Date outCinema) {
         this.outCinema = outCinema;
-    }
-
-    public ArrayList getPlayTime() {
-        return playTime;
-    }
-
-    public void setPlayTime(ArrayList playTime) {
-        this.playTime = playTime;
     }
 
     public String getTitle() {
@@ -111,6 +96,14 @@ public class Movie {
 
     public void setRuntime(int runtime) {
         this.runtime = runtime;
+    }
+
+    public Cinema getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(Cinema cinema) {
+        this.cinema = cinema;
     }
 
     @Override

@@ -1,11 +1,10 @@
-import java.util.ArrayList;
+package pl.kul;
 
 public class Cinema {
     private int cin_id;
     private String name;
     private String street;
     private String city;
-    private ArrayList<Movie> movies;
 
     public Cinema(){}
 
