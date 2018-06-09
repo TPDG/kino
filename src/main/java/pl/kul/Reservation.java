@@ -2,27 +2,19 @@ package pl.kul;
 
 public class Reservation {
     private int res_id;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
+    private String first_name;
+    private String last_name;
+    private String phone_number;
     private Movie movie;
     private Cinema cinema;
     private int movieId;
     private int cinemaId;
 
-    public Reservation(String firstName, String lastName, String phoneNumber, Movie movie, Cinema cinema) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.movie = movie;
-        this.cinema = cinema;
-    }
-
-    public Reservation(int res_id, String firstName, String lastName, String phoneNumber, int movieId, int cinemaId) {
+    public Reservation(int res_id, String first_name, String last_name, String phone_number, int movieId, int cinemaId) {
         this.res_id = res_id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.phone_number = phone_number;
         this.movieId = movieId;
         this.cinemaId = cinemaId;
     }
@@ -35,28 +27,28 @@ public class Reservation {
         this.res_id = res_id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone_number() {
+        return phone_number;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public Movie getMovie() {
@@ -94,9 +86,9 @@ public class Reservation {
     @Override
     public String toString() {
         return "Rezerwacja - " +
-                "Imię: " + firstName + ", " +
-                "Nazwisko: " + lastName + ", " +
-                "Numer telefonu: " + phoneNumber + ", " +
+                "Imię: " + first_name + ", " +
+                "Nazwisko: " + last_name + ", " +
+                "Numer telefonu: " + phone_number + ", " +
                 "[ Id filmu: " + movieId + ", " +
                 "Id kina: " + cinemaId + "]"
                 ;

@@ -1,5 +1,6 @@
 package pl.kul;
 
 public interface ConnectRepo {
-    long saveRes(Reservation reservation);
+    int saveRes(Reservation reservation);
+    //Reservation findById(int res_id);
 }

@@ -8,6 +8,10 @@ import java.sql.Statement;
 
 public class Connect implements ConnectRepo {
 
+    private static final String FIND_BY_ID_QUERY = "SELECT first_name, last_name, phone_number, idMovie, idCinema" +
+            "FROM reservation " +
+            "WHERE res_id = ?";
+
     private static final String INSERT_RESERVATION_QUERY = "INSERT INTO reservation " +
             "(first_name, last_name, phone_number, idMovie, idCinema) " +
             "VALUES (?, ?, ?, ?, ?)";
@@ -25,17 +29,6 @@ public class Connect implements ConnectRepo {
                     "phone_number varchar NOT NULL," +
                     "idMovie number NOT NULL," +
                     "idCinema number NOT NULL" +
-                    /*"CREATE TABLE IF NOT EXISTS movie (" +
-                    "id int NOT NULL AUTO_INCREMENT PRIMARY KEY," +
-                    "title varchar NOT NULL," +
-                    "director varchar NOT NULL," +
-                    "date number NOT NULL" +
-                    "studio varchar NOT NULL" +
-                    "genere varchar NOT NULL" +
-                    "runtime number NOT NULL" +
-                    "inCinema date NOT NULL" +
-                    "outCinema date NOT NULL" +
-                    "idCinema number NOT NULL" +*/
                     ")");
         } catch (SQLException ex) {
             throw new IllegalStateException(ex);
@@ -43,13 +36,13 @@ public class Connect implements ConnectRepo {
     }
 
     @Override
-    public long saveRes(Reservation reservation) {
+    public int saveRes(Reservation person) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_RESERVATION_QUERY, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, reservation.getFirstName());
-            preparedStatement.setString(2, reservation.getLastName());
-            preparedStatement.setString(3, reservation.getPhoneNumber());
-            preparedStatement.setInt(4, reservation.getMovieId());
-            preparedStatement.setInt(5, reservation.getCinemaId());
+            preparedStatement.setString(1, person.getFirst_name());
+            preparedStatement.setString(2, person.getLast_name());
+            preparedStatement.setString(3, person.getPhone_number());
+            preparedStatement.setInt(4, person.getMovieId());
+            preparedStatement.setInt(5, person.getCinemaId());
 
             int inserted = preparedStatement.executeUpdate();
 
@@ -62,11 +55,34 @@ public class Connect implements ConnectRepo {
                     throw new IllegalStateException("Query did not return created primary key");
                 }
 
-                return generatedKeys.getLong(1);
+                return generatedKeys.getInt(1);
             }
         } catch (SQLException ex) {
             throw new IllegalStateException("Could not execute query", ex);
         }
     }
+
+
+    /*@Override
+    public Reservation findById(int res_id) {
+        try (PreparedStatement statement = connection.prepareStatement(FIND_BY_ID_QUERY)) {
+            statement.setInt(1, res_id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (!resultSet.next()) {
+                    return null;
+                } else {
+                    String first_name = resultSet.getString(1);
+                    String last_name = resultSet.getString(2);
+                    String phone_number = resultSet.getString(3);
+                    int idMovie = resultSet.getInt(4);
+                    int idCinema = resultSet.getInt(5);
+
+                    return new Reservation(res_id, first_name, last_name, phone_number, idMovie, idCinema);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new IllegalStateException("Could not execute query", ex);
+        }
+    }*/
 }
 
